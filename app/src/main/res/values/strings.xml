@@ -3,8 +3,8 @@
 
     <string name="Userbtn">User</string>
     <string name="StatisticAnalystbtn">Statistic Analyst</string>
-    <string name="SignInLbl">Sign In As:</string>
-    <string name="QuestionMark">\?</string>
-    <string name="Language">EN/GR</string>
+    <string name="SignInlbl">Sign In As:</string>
+    <string name="Helpbtn">\?</string>
+    <string name="Languagebtn">EN/GR</string>
 
 </resources>

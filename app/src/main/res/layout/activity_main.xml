@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#061A29"
+    android:background="@color/palette_blue_6"
     tools:context=".MainActivity">
 
 
     <!-- Κουμπί Βοήθειας Πάνω Αριστερά -->
     <Button
-        android:id="@+id/btnHelp"
+        android:id="@+id/Helpbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="#004B7D"
-        android:text="@string/QuestionMark"
+        android:backgroundTint="@color/palette_blue_4"
+        android:text="@string/Helpbtn"
         android:textColor="#FFFFFF"
+        app:cornerRadius="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Κουμπί Γλώσσας Πάνω Δεξιά -->
     <Button
-        android:id="@+id/btnLanguage"
+        android:id="@+id/Languagebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="#004B7D"
-        android:text="@string/Language"
+        android:backgroundTint="@color/palette_blue_4"
+        android:text="@string/Languagebtn"
         android:textColor="#FFFFFF"
+        app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Χώρος για το Logo (ImageView) -->
+    <!-- Χώρος για το Logo -->
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -43,7 +44,7 @@
         app:layout_constraintBottom_toTopOf="@+id/loginContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLanguage"
+        app:layout_constraintTop_toBottomOf="@+id/Languagebtn"
         app:layout_constraintVertical_bias="0.4" />
 
 
@@ -51,9 +52,9 @@
         android:id="@+id/loginContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
         android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,33 +63,35 @@
 
         <!-- Label "Sign in as:" -->
         <TextView
-            android:id="@+id/tvSignInLabel"
+            android:id="@+id/SignInLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/SignInLbl"
-            android:textColor="#00A2FF"
+            android:text="@string/SignInlbl"
+            android:textColor="@color/palette_blue_1"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <!-- Κουμπί User -->
         <Button
-            android:id="@+id/btnSignInUser"
+            android:id="@+id/Userbtn"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="#0082D6"
+            android:backgroundTint="@color/palette_blue_2"
             android:text="@string/Userbtn"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            app:cornerRadius="16dp" />
 
         <!-- Κουμπί Statistics Analyst -->
         <Button
-            android:id="@+id/btnSignInAnalyst"
+            android:id="@+id/StatisticAnalystbtn"
             android:layout_width="250dp"
             android:layout_height="60dp"
-            android:backgroundTint="#0067AA"
+            android:backgroundTint="@color/palette_blue_3"
             android:text="@string/StatisticAnalystbtn"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 

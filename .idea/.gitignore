@@ -1,0 +1,66 @@
+# =========================
+# Build files
+# =========================
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+
+build/
+out/
+.gradle/
+
+# Native build
+.externalNativeBuild/
+.cxx/
+
+# =========================
+# Local config (NEVER commit)
+# =========================
+local.properties
+
+# Keystore files (sensitive)
+*.jks
+*.keystore
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Android Studio / IntelliJ
+# =========================
+
+# Ignore everything by default
+.idea/
+
+# But KEEP important shared config
+!.idea/compiler.xml
+!.idea/gradle.xml
+!.idea/misc.xml
+!.idea/vcs.xml
+
+# Ignore user-specific stuff
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+.idea/caches/
+.idea/libraries/
+.idea/.name
+
+# Module files
+*.iml
+
+# =========================
+# Google Services (optional)
+# =========================
+# Uncomment if you don't want to expose Firebase config
+# google-services.json
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db

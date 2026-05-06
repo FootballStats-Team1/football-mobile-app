@@ -1,10 +1,20 @@
 <resources>
+
+    <!-- General -->
     <string name="app_name">temp-project</string>
+    <string name="backButton">Back</string>
 
     <string name="Userbtn">User</string>
     <string name="StatisticAnalystbtn">Statistic Analyst</string>
     <string name="SignInlbl">Sign In As:</string>
     <string name="Helpbtn">\?</string>
     <string name="Languagebtn">EN/GR</string>
+
+
+    <!-- Activity of Stats Analyst Confirmation -->
+    <string name="confirmText">Enter Analyst Key</string>
+    <string name="enterButton">Check Validation</string>
+
+
 
 </resources>

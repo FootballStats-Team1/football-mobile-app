@@ -17,7 +17,6 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
     TextView errorText;
     String enteredPassword;
 
-    int numOfTries = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +42,17 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
     public void validatePassword(View v)
     {
         enteredPassword = passwordText.getText().toString();
-        while (true)
-        {
-            if (enteredPassword.equals(14111926))
+        errorText.setVisibility(View.VISIBLE);
+
+            if (enteredPassword.equals("14111926"))
             {
                 // new intent (3rd activity)
+                errorText.setText("You may enter.");
             }
-            else {
-                numOfTries--;
-                errorText.setText("Wrong Key. Attempts Remaining: " + numOfTries);
-
-            }
-            if (numOfTries == 0)
+            else
             {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                errorText.setText("Wrong Key. Contact epo@gmail.com to get a key.");
             }
-        }
+
     }
 }

@@ -55,6 +55,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/palette_blue_1"
         android:ems="10"
+        android:onClick="validatePassword"
         android:text="@string/enterButton"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,10 +65,11 @@
 
     <TextView
         android:id="@+id/wrongPasswordTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Wrong Key. 2 Attempts remaining"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="20sp"
         android:textStyle="italic"

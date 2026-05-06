@@ -89,6 +89,7 @@
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/palette_blue_3"
+            android:onClick="analystEnter"
             android:text="@string/StatisticAnalystbtn"
             android:textColor="#FFFFFF"
             app:cornerRadius="16dp" />

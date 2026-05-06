@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">temp-project</string>
+
+    <string name="Userbtn">User</string>
+    <string name="StatisticAnalystbtn">Statistic Analyst</string>
+    <string name="SignInLbl">Sign In As:</string>
+    <string name="QuestionMark">\?</string>
+    <string name="Language">EN/GR</string>
+
 </resources>

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Αυτοδημιούργητα Χρώματα-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <!-- Χρώματα Παλέτας Project -->
+    <color name="palette_blue_1">#FF00A2FF</color>
+    <color name="palette_blue_2">#FF0082D6</color>
+    <color name="palette_blue_3">#FF0067AA</color>
+    <color name="palette_blue_4">#FF004B7D</color>
+    <color name="palette_blue_5">#FF003058</color>
+    <color name="palette_blue_6">#FF061A29</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+
 </resources>

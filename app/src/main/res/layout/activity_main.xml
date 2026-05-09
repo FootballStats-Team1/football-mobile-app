@@ -40,7 +40,7 @@
         android:id="@+id/imgLogo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/epo"
         app:layout_constraintBottom_toTopOf="@+id/loginContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

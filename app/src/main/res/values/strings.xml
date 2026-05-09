@@ -14,7 +14,7 @@
     <!-- Activity of Stats Analyst Confirmation -->
     <string name="confirmText">Enter Analyst Key</string>
     <string name="enterButton">Check Validation</string>
-    <string name="wrongPasswordTxt">Wrong Key. 2 Attempts remaining</string>
+    <string name="wrongPasswordTxt">Wrong Key. Contact EPO@gmail.com to get your key</string>
 
 
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="backButton">Πίσω</string>
+    <string name="Userbtn">Χρήστης</string>
+    <string name="StatisticAnalystbtn">Αναλυτής Στατιστικών</string>
+    <string name="SignInlbl">Σύνδεση ως:</string>
+    <string name="confirmText">Κωδικός Αναλυτή</string>
+    <string name="enterButton">Επαλήθευση Κωδικού</string>
+    <string name="wrongPasswordTxt">Λάθος Κωδικός. Απομένουν 2 προπάθειες.</string>
+</resources>

@@ -46,8 +46,8 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
 
             if (enteredPassword.equals("14111926"))
             {
-                // new intent (3rd activity)
-                errorText.setText("You may enter.");
+                Intent intent = new Intent(this, StandingsActivity.class);
+                startActivity(intent);
             }
             else
             {

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.temp_project.StandingsActivity">
+
+    <TableLayout
+        android:id="@+id/leagueTable"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:scrollbarSize="4dp"
+        android:stretchColumns="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Header row -->
+        <TableRow android:background="@color/button_color">
+
+            <TextView
+                android:padding="8dp"
+                android:text="#"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:padding="8dp"
+                android:text="TEAM"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="MP"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="GD"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:padding="8dp"
+                android:text="PTS"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

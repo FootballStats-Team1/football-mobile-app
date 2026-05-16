@@ -18,7 +18,7 @@
         <activity
             android:name="com.example.temp_project.StandingsActivity"
             android:exported="false"
-            android:parentActivityName=".StatsAnalystConfirmationActivity"/>
+            android:parentActivityName=".MainActivity"/>
 
         <meta-data
             android:name="com.google.android.actions"

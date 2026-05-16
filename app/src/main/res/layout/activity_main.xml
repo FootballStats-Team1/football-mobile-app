@@ -79,6 +79,7 @@
             android:layout_height="60dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/palette_blue_2"
+            android:onClick="userEnter"
             android:text="@string/Userbtn"
             android:textColor="#FFFFFF"
             app:cornerRadius="16dp" />

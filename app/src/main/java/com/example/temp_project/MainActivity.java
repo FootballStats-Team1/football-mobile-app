@@ -10,7 +10,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button analystBtn;
-    Intent nextActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void analystEnter(View v)
     {
-        nextActivity = new Intent(this, StatsAnalystConfirmationActivity.class);
+        Intent nextActivity = new Intent(this, StatsAnalystConfirmationActivity.class);
         startActivity(nextActivity);
+    }
+
+    public void userEnter(View v)
+    {
+        Intent intent = new Intent(this, StandingsActivity.class);
+        startActivity(intent);
     }
 }

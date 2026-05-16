@@ -24,7 +24,7 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stats_analyst_confirmation);
 
         backButton = findViewById(R.id.backBtn);
-        passwordText = findViewById(R.id.passowrdTxt);
+        passwordText = findViewById(R.id.passwordTxt);
         errorText = findViewById(R.id.wrongPasswordTxt);
 
         errorText.setVisibility(View.INVISIBLE);

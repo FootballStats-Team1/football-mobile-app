@@ -16,9 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.temp_project.StandingsActivity"
+            android:name=".AppMenuActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".StandingsActivity"
+            android:exported="false"
+            android:parentActivityName=".AppMenuActivity" />
 
         <meta-data
             android:name="com.google.android.actions"

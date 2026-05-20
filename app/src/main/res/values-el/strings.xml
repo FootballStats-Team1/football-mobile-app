@@ -10,6 +10,13 @@
     <string name="help_message">Καλώς ήρθατε στο Σύστημα Διαχείρισης!\n\nΕπιλέξτε τον ρόλο σας για να συνδεθείτε:\n\n• User (Φίλαθλος): Παρακολούθηση αγώνων, live στατιστικά, βαθμολογίες και 11-άδες.\n\n• Statistics Analyst: Διαχείριση κάρτας αγώνα και καταγραφή γεγονότων (σουτ, πάσες, κάρτες κ.λπ.).</string>
     <string name="help_understood">Κατάλαβα</string>
 
+    <string name="menu_title">ΑΡΧΙΚΟ ΜΕΝΟΥ</string>
+    <string name="menu_manage_match">Διαχείριση Αγώνα</string>
+    <string name="menu_standings">ΒΑΘΜΟΛΟΓΙΑ</string>
+    <string name="menu_matches">ΑΓΩΝΕΣ</string>
+    <string name="menu_player_stats">ΣΤΑΤΙΣΤΙΚΑ ΠΑΙΚΤΩΝ</string>
+    <string name="menu_best_11">ΚΑΛΥΤΕΡΗ 11ΑΔΑ</string>
+
     <string name="confirmText">Κωδικός Αναλυτή</string>
     <string name="enterButton">Επαλήθευση Κωδικού</string>
     <string name="wrongPasswordTxt">Λάθος Κωδικός. Επικοινωνήστε με EPO@gmail.com για διευθέτηση κωδικού.</string>

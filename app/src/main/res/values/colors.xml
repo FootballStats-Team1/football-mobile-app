@@ -16,6 +16,10 @@
     <color name="palette_blue_5">#FF003058</color>
     <color name="palette_blue_6">#FF061A29</color>
 
+    <color name="table_row_gray">#FFF5F5F5</color>
+    <color name="text_dark_gray">#FF333333</color>
+    <color name="points_blue">#FF1565C0</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 

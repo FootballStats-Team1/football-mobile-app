@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void userEnter(View v)
     {
-        Intent intent = new Intent(this, StandingsActivity.class);
+        Intent intent = new Intent(this, AppMenuActivity.class);
+        intent.putExtra("IS_ANALYST", false);
         startActivity(intent);
     }
 

@@ -17,6 +17,13 @@
     <string name="help_message">Welcome to the Management System!\n\nPlease select your role to log in:\n\n• User (Fan): Monitor matches, live statistics, standings, and top 11 lineups.\n\n• Statistics Analyst: Manage match cards and record events (shots, passes, cards, etc.).</string>
     <string name="help_understood">Understood</string>
 
+    <string name="menu_title">MAIN MENU</string>
+    <string name="menu_manage_match">Manage Match</string>
+    <string name="menu_standings">STANDINGS</string>
+    <string name="menu_matches">MATCHES</string>
+    <string name="menu_player_stats">PLAYER STATS</string>
+    <string name="menu_best_11">BEST 11</string>
+
     <!-- Activity of Stats Analyst Confirmation -->
     <string name="confirmText">Enter Analyst Key</string>
     <string name="enterButton">Check Validation</string>

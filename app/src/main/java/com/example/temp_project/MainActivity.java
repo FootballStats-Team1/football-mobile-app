@@ -1,6 +1,7 @@
 package com.example.temp_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,5 +30,20 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, StandingsActivity.class);
         startActivity(intent);
+    }
+
+    public void helpEnter(View v)
+    {
+        String helpText = "Καλώς ήρθατε στο Σύστημα Διαχείρισης!\n\n" +
+                "Επιλέξτε τον ρόλο σας για να συνδεθείτε:\n\n" +
+                "• User (Φίλαθλος): Παρακολούθηση αγώνων, live στατιστικά, βαθμολογίες και 11-άδες.\n\n" +
+                "• Statistics Analyst: Διαχείριση κάρτας αγώνα και καταγραφή γεγονότων (σουτ, πάσες, κάρτες κ.λπ.).";
+
+        new AlertDialog.Builder(this)
+                .setTitle("Οδηγίες Χρήσης")
+                .setMessage(helpText)
+                .setPositiveButton("Κατάλαβα", null)
+                .setIcon(android.R.drawable.ic_menu_help)
+                .show();
     }
 }

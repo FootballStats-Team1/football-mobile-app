@@ -19,7 +19,8 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="helpEnter" />
 
     <!-- Κουμπί Γλώσσας Πάνω Δεξιά -->
     <Button

@@ -4,61 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/palette_blue_6"
     tools:context="com.example.temp_project.StandingsActivity">
 
     <TableLayout
         android:id="@+id/leagueTable"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="10dp"
-        android:background="@color/palette_blue_1"
-        android:shrinkColumns="1"
+        android:scrollbarSize="4dp"
         android:stretchColumns="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow>
+        <!-- Header row -->
+        <TableRow android:background="@color/palette_blue_2">
 
             <TextView
-                android:padding="4dp"
+                android:padding="8dp"
                 android:text="#"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:padding="4dp"
-                android:text="Team"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:layout_width="10dp"
+                android:padding="8dp"
+                android:text="TEAM"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:gravity="center"
-                android:padding="4dp"
+                android:padding="8dp"
                 android:text="MP"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:gravity="center"
-                android:padding="4dp"
+                android:padding="8dp"
                 android:text="GD"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:gravity="center"
-                android:padding="4dp"
+                android:padding="8dp"
                 android:text="PTS"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </TableRow>

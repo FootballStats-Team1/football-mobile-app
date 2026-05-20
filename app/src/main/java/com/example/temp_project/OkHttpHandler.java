@@ -12,9 +12,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class OkHttpHandler {
-
     private final OkHttpClient client = new OkHttpClient();
-    private static final String IP = "192.168.1.13";
 
     public interface StandingsCallback {
         void onSuccess(JSONArray standings);
@@ -22,7 +20,7 @@ public class OkHttpHandler {
     }
 
     public void getStandings(StandingsCallback callback) {
-        String url = "http://" + IP + "/epoDBServices/getStandings.php";
+        String url = Config.BASE_URL + "getStandings.php";
 
         Request request = new Request.Builder()
                 .url(url)

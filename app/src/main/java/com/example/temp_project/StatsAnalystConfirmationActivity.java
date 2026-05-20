@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class StatsAnalystConfirmationActivity extends AppCompatActivity {
 
-    Button backButton;
     EditText passwordText;
 
     TextView errorText;
@@ -23,26 +22,17 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats_analyst_confirmation);
 
-        backButton = findViewById(R.id.backBtn);
         passwordText = findViewById(R.id.passwordTxt);
         errorText = findViewById(R.id.wrongPasswordTxt);
 
         errorText.setVisibility(View.INVISIBLE);
 
-
-
     }
 
-    public void backFeature(View v)
-    {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 
     public void validatePassword(View v)
     {
         enteredPassword = passwordText.getText().toString();
-        errorText.setVisibility(View.VISIBLE);
 
             if (enteredPassword.equals("14111926"))
             {
@@ -51,6 +41,7 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
             }
             else
             {
+                errorText.setVisibility(View.VISIBLE);
                 errorText.setText("Wrong Key. Contact epo@gmail.com to get a key.");
             }
 

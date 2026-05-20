@@ -34,16 +34,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void helpEnter(View v)
     {
-        String helpText = "Καλώς ήρθατε στο Σύστημα Διαχείρισης!\n\n" +
-                "Επιλέξτε τον ρόλο σας για να συνδεθείτε:\n\n" +
-                "• User (Φίλαθλος): Παρακολούθηση αγώνων, live στατιστικά, βαθμολογίες και 11-άδες.\n\n" +
-                "• Statistics Analyst: Διαχείριση κάρτας αγώνα και καταγραφή γεγονότων (σουτ, πάσες, κάρτες κ.λπ.).";
+        String helpTitle = getString(R.string.help_title);
+        String helpText = getString(R.string.help_message);
+        String btnText = getString(R.string.help_understood);
 
         new AlertDialog.Builder(this)
-                .setTitle("Οδηγίες Χρήσης")
+                .setTitle(helpTitle)
                 .setMessage(helpText)
-                .setPositiveButton("Κατάλαβα", null)
+                .setPositiveButton(btnText, null)
                 .setIcon(android.R.drawable.ic_menu_help)
                 .show();
+    }
+
+    public void changeLanguage(View v) {
+        String currentLang = getResources().getConfiguration().locale.getLanguage();
+
+        String targetEn = getString(R.string.lang_en);
+        String targetEl = getString(R.string.lang_el);
+
+        String newLang = currentLang.equals(targetEn) ? targetEl : targetEn;
+
+        java.util.Locale locale = new java.util.Locale(newLang);
+        java.util.Locale.setDefault(locale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+        recreate();
     }
 }

@@ -10,6 +10,12 @@
     <string name="Helpbtn" translatable="false">\?</string>
     <string name="Languagebtn" translatable="false">EN/GR</string>
 
+    <string name="lang_en" translatable="false">en</string>
+    <string name="lang_el" translatable="false">el</string>
+
+    <string name="help_title">Instructions</string>
+    <string name="help_message">Welcome to the Management System!\n\nPlease select your role to log in:\n\n• User (Fan): Monitor matches, live statistics, standings, and top 11 lineups.\n\n• Statistics Analyst: Manage match cards and record events (shots, passes, cards, etc.).</string>
+    <string name="help_understood">Understood</string>
 
     <!-- Activity of Stats Analyst Confirmation -->
     <string name="confirmText">Enter Analyst Key</string>

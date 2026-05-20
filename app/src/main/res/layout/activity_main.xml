@@ -33,7 +33,8 @@
         android:textColor="#FFFFFF"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="changeLanguage"/>
 
     <!-- Χώρος για το Logo -->
 

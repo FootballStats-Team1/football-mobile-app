@@ -36,19 +36,6 @@
         app:layout_constraintVertical_bias="0.542" />
 
     <Button
-        android:id="@+id/backBtn"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="@color/palette_blue_1"
-        android:onClick="backFeature"
-        android:text="@string/backButton"
-        app:cornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/enterBtn"
         android:layout_width="250dp"
         android:layout_height="wrap_content"

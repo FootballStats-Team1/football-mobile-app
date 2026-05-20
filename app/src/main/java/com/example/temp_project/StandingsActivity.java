@@ -45,39 +45,21 @@ public class StandingsActivity extends AppCompatActivity {
     }
 
     private void fetchStandingsFromAPI() {
-        OkHttpClient client = new OkHttpClient();
+        OkHttpHandler handler = new OkHttpHandler();
 
-        // ΠΡΟΣΟΧΗ: Βάλε την IP του δικού σου υπολογιστή και τον σωστό φάκελο στο XAMPP
-        String url = "http://192.168.68.107/epoDBServices/getStandings.php";
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+        handler.getStandings(new OkHttpHandler.StandingsCallback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("API_ERROR", "Αποτυχία σύνδεσης: " + e.getMessage());
-                runOnUiThread(() -> Toast.makeText(StandingsActivity.this, "Σφάλμα Δικτύου!", Toast.LENGTH_SHORT).show());
+            public void onSuccess(JSONArray standings) {
+                runOnUiThread(() -> populateTable(standings));
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String responseString = response.body().string();
-
-                    try {
-                        JSONArray jsonArray = new JSONArray(responseString);
-
-                        // Επειδή θα πειράξουμε το UI (θα προσθέσουμε γραμμές), μπαίνουμε στο UI Thread
-                        runOnUiThread(() -> {
-                            populateTable(jsonArray);
-                        });
-
-                    } catch (JSONException e) {
-                        Log.e("JSON_ERROR", "Πρόβλημα στο Parsing: " + e.getMessage());
-                    }
-                }
+            public void onError(String message) {
+                Log.e("API_ERROR", message);
+                runOnUiThread(() -> Toast.makeText(
+                        StandingsActivity.this,
+                        "Σφάλμα Δικτύου!",
+                        Toast.LENGTH_SHORT).show());
             }
         });
     }
@@ -145,7 +127,7 @@ public class StandingsActivity extends AppCompatActivity {
         }
     }
 
-    // Βοηθητική μέθοδος για να είναι όλα τα κελιά ομοιόμορφα (με padding όπως στο XML σου)
+
     private TextView createTextView(String text) {
         TextView textView = new TextView(this);
         textView.setText(text);

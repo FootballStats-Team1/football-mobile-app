@@ -36,13 +36,12 @@ public class AppMenuActivity extends AppCompatActivity {
 
     public void matchesEnter(View v) {
         // Θα συνδεθεί με την οθόνη Παρακολούθησης/Στατιστικών Αγώνων (Requirements R3, R4)
+        Intent intent = new Intent(this, MatchesActivity.class);
+        startActivity(intent);
     }
 
     public void playerStatsEnter(View v) {
         // Θα συνδεθεί με την οθόνη Ατομικών/Ομαδικών Στατιστικών (Requirement R5)
     }
 
-    public void best11Enter(View v) {
-        // Θα συνδεθεί με την οθόνη της Καλύτερης 11άδας (Requirement R6)
-    }
 }

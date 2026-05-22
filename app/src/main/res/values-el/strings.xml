@@ -17,7 +17,19 @@
     <string name="menu_player_stats">ΣΤΑΤΙΣΤΙΚΑ ΠΑΙΚΤΩΝ</string>
     <string name="menu_best_11">ΚΑΛΥΤΕΡΗ 11ΑΔΑ</string>
 
+    <!-- Activity of Stats Analyst Confirmation -->
     <string name="confirmText">Κωδικός Αναλυτή</string>
     <string name="enterButton">Επαλήθευση Κωδικού</string>
     <string name="wrongPasswordTxt">Λάθος Κωδικός. Επικοινωνήστε με EPO@gmail.com για διευθέτηση κωδικού.</string>
+
+    <!-- Matches Activity -->
+    <string name="title_matches">Πρόγραμμα Αγώνων</string>
+    <string name="select_matchday">Αγωνιστική:</string>
+    <string name="matchday_prefix">Αγωνιστική</string>
+    <string name="team_name">ΟΜΑΔΑ</string>
+    <string name="mp">ΑΓ</string>
+    <string name="gd">ΔΓ</string>
+    <string name="pts">ΒΑΘ</string>
+
+
 </resources>

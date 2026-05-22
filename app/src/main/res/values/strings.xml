@@ -29,5 +29,16 @@
     <string name="enterButton">Check Validation</string>
     <string name="wrongPasswordTxt">Wrong Key. Contact EPO@gmail.com to get your key</string>
 
+    <!-- Matches Activity -->
+    <string name="team_name">TEAM</string>
+    <string name="mp">MP</string>
+    <string name="gd">GD</string>
+    <string name="pts">PTS</string>
+
+    <!-- Matches Activity -->
+    <string name="title_matches">Matches Schedule</string>
+    <string name="select_matchday">Matchday:</string>
+    <string name="matchday_prefix">Matchday</string>
+
 
 </resources>

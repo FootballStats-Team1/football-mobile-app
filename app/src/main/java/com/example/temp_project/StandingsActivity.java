@@ -2,155 +2,114 @@ package com.example.temp_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class StandingsActivity extends AppCompatActivity {
 
-    TableLayout leagueTable;
+    private StandingsList standingsList;
+    private TableLayout leagueTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standings);
 
-        // Ενεργοποίηση του βέλους επιστροφής (Back Arrow)
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
+        // Σύνδεση της μεταβλητής με το UI element
         leagueTable = findViewById(R.id.leagueTable);
 
-        // Εκκίνηση της διαδικασίας λήψης δεδομένων
-        fetchStandingsFromAPI();
+        // 1. Κατεβάζουμε τα δεδομένα απευθείας - Δεν χρειάζεται να παίρνει όρισμα ο constructor γιατί έχουμε το URL ως global μεταβλητή
+        standingsList = new StandingsList();
+
+        // 2. Κάνουμε populate τον πίνακα
+        populateTable(standingsList.getStandings());
     }
 
-    // Λειτουργικότητα του βέλους επιστροφής
-    @Override
-    public boolean onOptionsItemSelected(android.view.MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    private void populateTable(ArrayList<Standing> list) {
+        for (int i = 0; i < list.size(); i++) {
+            Standing standing = list.get(i); // Παίρνουμε το Object της ομάδας
 
-    private void fetchStandingsFromAPI() {
-        OkHttpHandler handler = new OkHttpHandler();
+            // 1. Δημιουργία Γραμμής
+            TableRow row = new TableRow(this);
+            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+            row.setLayoutParams(lp);
 
-        handler.getStandings(new OkHttpHandler.StandingsCallback() {
-            @Override
-            public void onSuccess(JSONArray standings) {
-                runOnUiThread(() -> populateTable(standings));
+            if (i % 2 == 0) {
+                row.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.table_row_gray));
+            } else {
+                row.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.white));
             }
 
-            @Override
-            public void onError(String message) {
-                Log.e("API_ERROR", message);
-                runOnUiThread(() -> Toast.makeText(
-                        StandingsActivity.this,
-                        "Σφάλμα Δικτύου!",
-                        Toast.LENGTH_SHORT).show());
-            }
-        });
-    }
+            // 2. Δημιουργία των κελιών (6 στήλες)
 
-    private void populateTable(JSONArray jsonArray) {
-        try {
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
+            // Στήλη 1: Θέση
+            TextView tvPosition = createTextView(String.valueOf(i + 1));
+            tvPosition.setGravity(Gravity.CENTER);
 
-                String teamName = obj.getString("team_name");
-                int points = obj.getInt("points");
-                int wins = obj.getInt("wins");
-                int draws = obj.getInt("draws");
-                int losses = obj.getInt("losses");
-                int goalsFor = obj.getInt("goals_for");
-                int goalsAgainst = obj.getInt("goals_against");
+            // Στήλη 2: Logo
+            ImageView imgLogo = new ImageView(this);
 
-                int mp = wins + draws + losses;
-                int gd = goalsFor - goalsAgainst;
+            // Μέγεθος εικόνας 28x28dp
+            int imgSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, getResources().getDisplayMetrics());
+            TableRow.LayoutParams imgParams = new TableRow.LayoutParams(imgSize, imgSize);
+            imgParams.gravity = Gravity.CENTER;
+            imgLogo.setLayoutParams(imgParams);
 
-                // 1. Δημιουργία Γραμμής
-                TableRow row = new TableRow(this);
-                TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-                row.setLayoutParams(lp);
+            // Φόρτωση της εικόνας με Picasso
+            Picasso.with(getApplicationContext())
+                    .load(standing.getLogoUrl()) // (Με getter από το Object)
+                    .error(R.mipmap.ic_launcher_round)  // Αν το link δεν δουλεύει, δείξε το placeholder
+                    .into(imgLogo);
 
-                if (i % 2 == 0) {
-                    row.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.table_row_gray));
-                } else {
-                    row.setBackgroundColor(androidx.core.content.ContextCompat.getColor(this, R.color.white));
-                }
+            // Στήλη 3: Όνομα Ομάδας (Με getter από το Object)
+            TextView tvTeam = createTextView(standing.getTeamName());
+            tvTeam.setTypeface(null, android.graphics.Typeface.BOLD);
 
-                // 2. Δημιουργία των κελιών (6 στήλες)
+            // Στήλη 4: Αγώνες (Με ΜΕΘΟΔΟ από το Object, see Standing.java)
+            TextView tvMP = createTextView(String.valueOf(standing.getMatchesPlayed()));
+            tvMP.setGravity(Gravity.CENTER);
 
-                // Στήλη 1: Θέση
-                TextView tvPosition = createTextView(String.valueOf(i + 1));
-                tvPosition.setGravity(Gravity.CENTER);
+            // Στήλη 5: Διαφορά Γκολ
+            int gd = standing.getGoalDifference();
+            String gdText = (gd > 0) ? "+" + gd : String.valueOf(gd); // βάζουμε '+' αν είναι θετικό το goal diff, αν είναι αρνητικό το 'χει απο μόνο του το '-'
+            TextView tvGD = createTextView(gdText);
+            tvGD.setGravity(Gravity.CENTER);
 
-                // Στήλη 2: Logo Ομάδας (Χρησιμοποιώ προσωρινά το logo του Android)
-                ImageView imgLogo = new ImageView(this);
-                imgLogo.setImageResource(R.mipmap.ic_launcher_round);
-                // Μέγεθος εικόνας 24x24dp
-                int imgSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics());
-                TableRow.LayoutParams imgParams = new TableRow.LayoutParams(imgSize, imgSize);
-                imgParams.gravity = Gravity.CENTER;
-                imgLogo.setLayoutParams(imgParams);
+            // Στήλη 6: Πόντοι
+            TextView tvPoints = createTextView(String.valueOf(standing.getPoints()));
+            tvPoints.setTypeface(null, android.graphics.Typeface.BOLD);
+            tvPoints.setTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.points_blue));
+            tvPoints.setGravity(Gravity.CENTER);
 
-                // Στήλη 3: Όνομα Ομάδας
-                TextView tvTeam = createTextView(teamName);
-                tvTeam.setTypeface(null, android.graphics.Typeface.BOLD);
+            row.addView(tvPosition);
+            row.addView(imgLogo);
+            row.addView(tvTeam);
+            row.addView(tvMP);
+            row.addView(tvGD);
+            row.addView(tvPoints);
 
-                // Στήλη 4: Αγώνες
-                TextView tvMP = createTextView(String.valueOf(mp));
-                tvMP.setGravity(Gravity.CENTER);
-
-                // Στήλη 5: Διαφορά Γκολ
-                String gdText = (gd > 0) ? "+" + gd : String.valueOf(gd);
-                TextView tvGD = createTextView(gdText);
-                tvGD.setGravity(Gravity.CENTER);
-
-                // Στήλη 6: Πόντοι
-                TextView tvPoints = createTextView(String.valueOf(points));
-                tvPoints.setTypeface(null, android.graphics.Typeface.BOLD);
-                tvPoints.setTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.points_blue));
-                tvPoints.setGravity(Gravity.CENTER);
-
-                row.addView(tvPosition);
-                row.addView(imgLogo);
-                row.addView(tvTeam);
-                row.addView(tvMP);
-                row.addView(tvGD);
-                row.addView(tvPoints);
-
-                leagueTable.addView(row);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+            leagueTable.addView(row);
         }
     }
 
     private TextView createTextView(String text) {
         TextView textView = new TextView(this);
         textView.setText(text);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14); //
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         textView.setTextColor(androidx.core.content.ContextCompat.getColor(this, R.color.text_dark_gray));
 
         int paddingInPx = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics());
+                TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()); // 12dp padding
         textView.setPadding(paddingInPx, paddingInPx, paddingInPx, paddingInPx);
 
         return textView;

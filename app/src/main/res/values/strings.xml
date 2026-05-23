@@ -40,5 +40,24 @@
     <string name="select_matchday">Matchday:</string>
     <string name="matchday_prefix">Matchday</string>
 
+    <string name="teamStats"> Team Stats</string>
+    <string name="personalStats">Personal Stats</string>
+
+    <!-- Status αγώνα (αν δεν τα έχεις ήδη) -->
+    <string name="status_finished">Final</string>
+    <string name="status_pending">Not started</string>
+
+    <!-- Labels στατιστικών ομάδας -->
+    <string name="stat_possession">Posession</string>
+    <string name="stat_shots">Total Shots</string>
+    <string name="stat_shots_on">On target</string>
+    <string name="stat_passes">Passes</string>
+    <string name="stat_pass_acc">Pass Accuracy</string>
+    <string name="stat_tackles">Tackles</string>
+    <string name="stat_corners">Corner</string>
+    <string name="stat_fouls">Foul</string>
+    <string name="stat_yellows">Yellow Cards</string>
+    <string name="stat_reds">Red cards</string>
+
 
 </resources>

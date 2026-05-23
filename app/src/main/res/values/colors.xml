@@ -23,6 +23,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="header_blue">#1A3A6B</color>
+    <color name="relegation_red">#D32F2F</color>
+    <color name="divider_gray">#E0E0E0</color>
+
 
 
 </resources>

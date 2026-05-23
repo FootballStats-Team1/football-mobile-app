@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MatchDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MatchesActivity"
             android:exported="false"
             android:parentActivityName=".AppMenuActivity" />

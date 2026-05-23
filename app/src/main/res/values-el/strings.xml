@@ -31,5 +31,24 @@
     <string name="gd">ΔΓ</string>
     <string name="pts">ΒΑΘ</string>
 
+    <string name="teamStats"> Ομαδικά Στατιστικά</string>
+    <string name="personalStats">Ατομικά Στατιστικά</string>
+
+    <!-- Status αγώνα (αν δεν τα έχεις ήδη) -->
+    <string name="status_finished">Τελικό</string>
+    <string name="status_pending">Δεν έχει ξεκινήσει</string>
+
+    <!-- Labels στατιστικών ομάδας -->
+    <string name="stat_possession">Κατοχή</string>
+    <string name="stat_shots">Συνολικά σουτ</string>
+    <string name="stat_shots_on">Σουτ εντός εστίας</string>
+    <string name="stat_passes">Πάσες</string>
+    <string name="stat_pass_acc">Ευστοχία πάσας</string>
+    <string name="stat_tackles">Επιτυχημένα τάκλιν</string>
+    <string name="stat_corners">Κόρνερ</string>
+    <string name="stat_fouls">Φάουλ</string>
+    <string name="stat_yellows">Κίτρινες κάρτες</string>
+    <string name="stat_reds">Κόκκινες κάρτες</string>
+
 
 </resources>

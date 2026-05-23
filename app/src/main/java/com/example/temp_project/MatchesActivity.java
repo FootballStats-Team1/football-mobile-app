@@ -123,7 +123,7 @@ public class MatchesActivity extends AppCompatActivity {
             Picasso.with(getApplicationContext()).load(match.getHomeLogo()).error(R.mipmap.ic_launcher_round).into(imgHome);
             Picasso.with(getApplicationContext()).load(match.getAwayLogo()).error(R.mipmap.ic_launcher_round).into(imgAway);
 
-            /*// Τι γίνεται όταν πατάει πάνω σε έναν αγώνα
+            // Τι γίνεται όταν πατάει πάνω σε έναν αγώνα
             matchRow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -133,7 +133,7 @@ public class MatchesActivity extends AppCompatActivity {
                     intent.putExtra("MATCH_ID", match.getMatchId());
                     startActivity(intent);
                 }
-            });*/
+            });
 
             // Προσθέτουμε το row στο κεντρικό UI
             matchesContainer.addView(matchRow);

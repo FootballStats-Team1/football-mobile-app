@@ -34,7 +34,7 @@ public class OkHttpHandler {
         String data = response.body().string();
 
         try {
-            // Φτιάχνουμε JSONArray αντί για JSONObject γιατί το JSON message επιστρέφει εξωτερικά Array και ΟΧΙ Object
+
             JSONArray jsonArray = new JSONArray(data);
 
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -94,5 +94,78 @@ public class OkHttpHandler {
         }
 
         return matcheslist;
+    }
+
+    // Επιστρέφει ΕΝΑ MatchDetails (αγώνας + συγκεντρωτικά στατιστικά home/away) με βάση το matchId.
+    // ΠΡΟΣΟΧΗ: εδώ το JSON είναι εξωτερικά Object (ΟΧΙ Array), γιατί
+    // η υπηρεσία επιστρέφει έναν μόνο αγώνα και όχι λίστα.
+    public MatchDetails getMatchDetails(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        Request request = new Request.Builder().url(url).build(); // GET METHOD
+
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
+
+        Match match = null;
+        MatchStats homeStats = null;
+        MatchStats awayStats = null;
+
+        try {
+            JSONObject obj = new JSONObject(data); // Object, όχι Array
+
+            // Αν το PHP γύρισε error, επιστρέφουμε άδειο MatchDetails
+            if (obj.has("error")) {
+                return new MatchDetails(null, null, null);
+            }
+
+            // --- 1. Βασικά στοιχεία αγώνα ---
+            int matchId = obj.getInt("match_id");
+            int matchday = obj.getInt("matchday");
+            String homeTeam = obj.getString("home_team");
+            String homeLogo = obj.getString("home_logo");   // <-- το logo του γηπεδούχου (από το JOIN)
+            String awayTeam = obj.getString("away_team");
+            String awayLogo = obj.getString("away_logo");   // <-- το logo του φιλοξενούμενου (από το JOIN)
+            int homeScore = obj.getInt("home_score");
+            int awayScore = obj.getInt("away_score");
+            String status = obj.getString("status");
+
+            match = new Match(matchId, matchday, homeTeam, homeLogo, awayTeam, awayLogo, homeScore, awayScore, status);
+
+            // --- 2. Συγκεντρωτικά στατιστικά κάθε ομάδας (nested objects μέσα στο JSON) ---
+            homeStats = parseStats(obj.getJSONObject("home_stats"));
+            awayStats = parseStats(obj.getJSONObject("away_stats"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return new MatchDetails(match, homeStats, awayStats);
+    }
+
+    // Βοηθητική: μετατρέπει ένα JSONObject στατιστικών (home_stats / away_stats) σε MatchStats
+    private MatchStats parseStats(JSONObject obj) throws JSONException {
+        int goals = obj.getInt("goals");
+        int shotsOnTarget = obj.getInt("shots_on_target");
+        int shotsOffTarget = obj.getInt("shots_off_target");
+        int passesSucc = obj.getInt("passes_succ");
+        int passesFail = obj.getInt("passes_fail");
+        int tacklesSucc = obj.getInt("tackles_succ");
+        int tacklesFail = obj.getInt("tackles_fail");
+        int crossesSucc = obj.getInt("crosses_succ");
+        int crossesFail = obj.getInt("crosses_fail");
+        int assists = obj.getInt("assists");
+        int foulsCommitted = obj.getInt("fouls_committed");
+        int foulsWon = obj.getInt("fouls_won");
+        int cornersWon = obj.getInt("corners_won");
+        int yellowCards = obj.getInt("yellow_cards");
+        int redCards = obj.getInt("red_cards");
+        int totalPasses = obj.getInt("total_passes");
+        int possession = obj.getInt("possession");
+
+        return new MatchStats(goals, shotsOnTarget, shotsOffTarget,
+                passesSucc, passesFail, tacklesSucc, tacklesFail,
+                crossesSucc, crossesFail, assists,
+                foulsCommitted, foulsWon, cornersWon,
+                yellowCards, redCards, totalPasses, possession);
     }
 }

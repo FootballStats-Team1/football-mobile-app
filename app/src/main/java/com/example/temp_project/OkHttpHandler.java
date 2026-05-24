@@ -168,4 +168,31 @@ public class OkHttpHandler {
                 foulsCommitted, foulsWon, cornersWon,
                 yellowCards, redCards, totalPasses, possession);
     }
+
+    public ArrayList<ArrayList<String>> getMatchLineups(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        Request request = new Request.Builder().url(url).build();
+        Response response = client.newCall(request).execute();
+
+        ArrayList<ArrayList<String>> allLists = new ArrayList<>();
+        for (int i=0; i<4; i++) allLists.add(new ArrayList<String>());
+
+        try {
+            JSONObject obj = new JSONObject(response.body().string());
+
+            JSONArray hs = obj.getJSONArray("home_starters");
+            for (int i=0; i<hs.length(); i++) allLists.get(0).add(hs.getString(i));
+
+            JSONArray as = obj.getJSONArray("away_starters");
+            for (int i=0; i<as.length(); i++) allLists.get(1).add(as.getString(i));
+
+            JSONArray hsub = obj.getJSONArray("home_subs");
+            for (int i=0; i<hsub.length(); i++) allLists.get(2).add(hsub.getString(i));
+
+            JSONArray asub = obj.getJSONArray("away_subs");
+            for (int i=0; i<asub.length(); i++) allLists.get(3).add(asub.getString(i));
+
+        } catch (JSONException e) { e.printStackTrace(); }
+        return allLists;
+    }
 }

@@ -11,7 +11,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 // --- Σύνδεση με τη βάση ---
-$host = "127.0.0.1";
+$host = "localhost";
 $db   = "epodb";
 $user = "root";
 $pass = "";

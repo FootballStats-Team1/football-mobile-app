@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MatchDetailsActivity extends AppCompatActivity {
 
@@ -32,6 +35,12 @@ public class MatchDetailsActivity extends AppCompatActivity {
     private MatchDetails matchDetails;
     private int matchId;
     private boolean statsFilled = false; // για να μη γεμίζουμε το panel πολλές φορές
+
+    // Panel Παικτών
+    private ScrollView lineupsScroll;
+    private LinearLayout layoutHomeStarters, layoutAwayStarters;
+    private LinearLayout layoutHomeSubs, layoutAwaySubs;
+    private boolean lineupsFilled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +100,13 @@ public class MatchDetailsActivity extends AppCompatActivity {
         tvAwayYellows = findViewById(R.id.tvAwayYellows);
         tvHomeReds = findViewById(R.id.tvHomeReds);
         tvAwayReds = findViewById(R.id.tvAwayReds);
+
+        // Panel Παικτών
+        lineupsScroll = findViewById(R.id.lineupsScroll);
+        layoutHomeStarters = findViewById(R.id.layoutHomeStarters);
+        layoutAwayStarters = findViewById(R.id.layoutAwayStarters);
+        layoutHomeSubs = findViewById(R.id.layoutHomeSubs);
+        layoutAwaySubs = findViewById(R.id.layoutAwaySubs);
     }
 
     private void populateHeader(Match match) {
@@ -123,7 +139,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void setupButtons() {
+    /*private void setupButtons() {
         // --- TEAM STATS: εμφανίζει/κρύβει το panel με τα συγκεντρωτικά στατιστικά ---
         teamStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,11 +163,46 @@ public class MatchDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Εδώ θα ανοίγει η οθόνη με τα προσωπικά στατιστικά κάθε παίκτη.
-                /*
+                *//*
                 Intent intent = new Intent(MatchDetailsActivity.this, PersonalStatsActivity.class);
                 intent.putExtra("MATCH_ID", matchId);
                 startActivity(intent);
-                */
+                *//*
+            }
+        });
+    }*/
+    private void setupButtons() {
+        // --- TEAM STATS (Αριστερό κουμπί) ---
+        teamStatsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lineupsScroll.setVisibility(View.GONE); // Κρύβουμε τους παίκτες (αν ήταν ανοιχτοί)
+
+                if (statsScroll.getVisibility() == View.VISIBLE) {
+                    statsScroll.setVisibility(View.GONE);
+                } else {
+                    if (!statsFilled) {
+                        fillTeamStats();
+                    }
+                    statsScroll.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        // --- PERSONAL STATS (Δεξί κουμπί) ---
+        personalStatsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statsScroll.setVisibility(View.GONE); // Κρύβουμε τα στατιστικά (αν ήταν ανοιχτά)
+
+                if (lineupsScroll.getVisibility() == View.VISIBLE) {
+                    lineupsScroll.setVisibility(View.GONE);
+                } else {
+                    if (!lineupsFilled) {
+                        fillLineups();
+                    }
+                    lineupsScroll.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -206,5 +257,35 @@ public class MatchDetailsActivity extends AppCompatActivity {
         tvAwayReds.setText(String.valueOf(away.getRedCards()));
 
         statsFilled = true;
+    }
+
+    private void fillLineups() {
+        try {
+            OkHttpHandler handler = new OkHttpHandler();
+            // Φέρνουμε τις 4 λίστες
+            ArrayList<ArrayList<String>> lineups = handler.getMatchLineups(Config.BASE_URL + "getMatchLineups.php?matchId=" + matchId);
+
+            // Γεμίζουμε τα 4 Layouts με TextViews
+            populateColumn(layoutHomeStarters, lineups.get(0));
+            populateColumn(layoutAwayStarters, lineups.get(1));
+            populateColumn(layoutHomeSubs, lineups.get(2));
+            populateColumn(layoutAwaySubs, lineups.get(3));
+
+            lineupsFilled = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void populateColumn(LinearLayout container, ArrayList<String> players) {
+        for (String playerName : players) {
+            TextView tv = new TextView(this);
+            tv.setText(playerName);
+            tv.setTextColor(android.graphics.Color.WHITE);
+            tv.setTextSize(15f);
+            //tv.setTypeface(null, android.graphics.Typeface.BOLD);
+            tv.setPadding(0, 12, 0, 12);
+            container.addView(tv);
+        }
     }
 }

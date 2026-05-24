@@ -49,6 +49,9 @@
     <string name="stat_yellows">Κίτρινες κάρτες</string>
     <string name="stat_reds">Κόκκινες κάρτες</string>
 
+    <string name="starting">Βασικοί</string>
+    <string name="substitutes">Αναπληρωματικοί</string>
+
     <!-- Τίτλοι για τα headers των UIs -->
     <string name="title_matches">Πρόγραμμα Αγώνων</string>
     <string name="title_main">Αρχική</string>

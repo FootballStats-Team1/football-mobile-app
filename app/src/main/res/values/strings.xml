@@ -58,6 +58,10 @@
     <string name="stat_yellows">Yellow Cards</string>
     <string name="stat_reds">Red cards</string>
 
+
+    <string name="starting">Starting</string>
+    <string name="substitutes">Substitutes</string>
+
     <!-- Τίτλοι για τα headers των UIs -->
     <string name="title_matches">Matches Schedule</string>
     <string name="title_main">Home</string>

@@ -16,6 +16,8 @@ public class AppMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_menu);
 
+        setTitle(R.string.title_menu);
+
         analystSection = findViewById(R.id.analystSection);
 
         boolean isAnalyst = getIntent().getBooleanExtra("IS_ANALYST", false);

@@ -26,6 +26,8 @@ public class StandingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standings);
 
+        setTitle(R.string.title_standings);
+
         // Σύνδεση της μεταβλητής με το UI element
         leagueTable = findViewById(R.id.leagueTable);
 

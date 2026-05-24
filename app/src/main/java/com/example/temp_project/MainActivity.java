@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle(R.string.title_main);
+
         analystBtn = findViewById(R.id.StatisticAnalystbtn);
     }
 

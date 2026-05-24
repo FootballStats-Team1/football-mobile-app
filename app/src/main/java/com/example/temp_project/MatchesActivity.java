@@ -23,7 +23,6 @@ public class MatchesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matches);
 
-        // Ορισμός τίτλου από το strings.xml
         setTitle(getString(R.string.title_matches));
 
         spinnerMatchday = findViewById(R.id.spinnerMatchday);

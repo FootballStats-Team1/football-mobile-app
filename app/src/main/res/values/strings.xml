@@ -36,14 +36,13 @@
     <string name="pts">PTS</string>
 
     <!-- Matches Activity -->
-    <string name="title_matches">Matches Schedule</string>
     <string name="select_matchday">Matchday:</string>
     <string name="matchday_prefix">Matchday</string>
 
-    <string name="teamStats"> Team Stats</string>
+    <string name="teamStats">Team Stats</string>
     <string name="personalStats">Personal Stats</string>
 
-    <!-- Status αγώνα (αν δεν τα έχεις ήδη) -->
+    <!-- Status αγώνα  -->
     <string name="status_finished">Final</string>
     <string name="status_pending">Not started</string>
 
@@ -58,6 +57,14 @@
     <string name="stat_fouls">Foul</string>
     <string name="stat_yellows">Yellow Cards</string>
     <string name="stat_reds">Red cards</string>
+
+    <!-- Τίτλοι για τα headers των UIs -->
+    <string name="title_matches">Matches Schedule</string>
+    <string name="title_main">Home</string>
+    <string name="title_analyst_login">Analyst Login</string>
+    <string name="title_menu">Main Menu</string>
+    <string name="title_standings">Standings</string>
+    <string name="title_match_details">Match Details</string>
 
 
 </resources>

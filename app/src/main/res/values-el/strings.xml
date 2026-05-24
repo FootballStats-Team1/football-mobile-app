@@ -23,7 +23,6 @@
     <string name="wrongPasswordTxt">Λάθος Κωδικός. Επικοινωνήστε με EPO@gmail.com για διευθέτηση κωδικού.</string>
 
     <!-- Matches Activity -->
-    <string name="title_matches">Πρόγραμμα Αγώνων</string>
     <string name="select_matchday">Αγωνιστική:</string>
     <string name="matchday_prefix">Αγωνιστική</string>
     <string name="team_name">ΟΜΑΔΑ</string>
@@ -31,7 +30,7 @@
     <string name="gd">ΔΓ</string>
     <string name="pts">ΒΑΘ</string>
 
-    <string name="teamStats"> Ομαδικά Στατιστικά</string>
+    <string name="teamStats">Ομαδικά Στατιστικά</string>
     <string name="personalStats">Ατομικά Στατιστικά</string>
 
     <!-- Status αγώνα (αν δεν τα έχεις ήδη) -->
@@ -49,6 +48,16 @@
     <string name="stat_fouls">Φάουλ</string>
     <string name="stat_yellows">Κίτρινες κάρτες</string>
     <string name="stat_reds">Κόκκινες κάρτες</string>
+
+    <!-- Τίτλοι για τα headers των UIs -->
+    <string name="title_matches">Πρόγραμμα Αγώνων</string>
+    <string name="title_main">Αρχική</string>
+    <string name="title_analyst_login">Είσοδος Αναλυτή</string>
+    <string name="title_menu">Αρχικό Μενού</string>
+    <string name="title_standings">Βαθμολογία</string>
+    <string name="title_match_details">Στατιστικά Αγώνα</string>
+
+
 
 
 </resources>

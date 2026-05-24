@@ -22,6 +22,8 @@ public class StatsAnalystConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats_analyst_confirmation);
 
+        setTitle(R.string.title_analyst_login);
+
         passwordText = findViewById(R.id.passwordTxt);
         errorText = findViewById(R.id.wrongPasswordTxt);
 

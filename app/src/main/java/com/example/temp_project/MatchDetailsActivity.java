@@ -38,6 +38,8 @@ public class MatchDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_details);
 
+        setTitle(R.string.title_match_details);
+
         // 1. "Ξεπακετάρουμε" ΜΟΝΟ το ID που έστειλε η MatchesActivity
         matchId = getIntent().getIntExtra("MATCH_ID", -1);
 

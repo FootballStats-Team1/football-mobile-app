@@ -1,16 +1,17 @@
 <?php
 // getPlayerStats.php
 // Συγκεντρωτικά (σεζόν) στατιστικά παίκτη/παικτών, υπολογισμένα από τον match_events.
-// ΔΕΝ χρειάζεται ξεχωριστός πίνακας player_stats: τα αθροίζουμε live με SUM + GROUP BY,
-// ακριβώς όπως το getMatchDetails.php φτιάχνει τα team stats.
+// ΔΕΝ χρειάζεται ξεχωριστός πίνακας player_stats: τα αθροίζουμε live με SUM + GROUP BY.
+//
+// Σημείωση: ΔΕΝ υπάρχει corners εδώ - τα κόρνερ έγιναν team-level (πίνακας matches).
 //
 // Κλήσεις:
 //   getPlayerStats.php?playerId=77   -> totals ΕΝΟΣ παίκτη
 //   getPlayerStats.php?teamId=3      -> totals όλων των παικτών ΜΙΑΣ ομάδας
-//   getPlayerStats.php               -> totals ΟΛΩΝ των παικτών (π.χ. για πίνακα σκόρερ)
+//   getPlayerStats.php               -> totals ΟΛΩΝ των παικτών (π.χ. πίνακας σκόρερ)
 
 header('Content-Type: application/json; charset=utf-8');
-$conn = new mysqli("localhost", "root", "", "epodb");
+$conn = new mysqli("127.0.0.1", "root", "", "epodb");
 $conn->set_charset("utf8mb4");
 if ($conn->connect_error) {
     die(json_encode(["error" => "Connection failed"]));
@@ -19,7 +20,7 @@ if ($conn->connect_error) {
 $playerId = isset($_GET['playerId']) ? intval($_GET['playerId']) : 0;
 $teamId   = isset($_GET['teamId'])   ? intval($_GET['teamId'])   : 0;
 
-// Φτιάχνουμε δυναμικά το φίλτρο με prepared statement (ασφάλεια από SQL injection)
+// Δυναμικό φίλτρο με prepared statement (ασφάλεια από SQL injection)
 $where  = "WHERE m.status = 'finished'";
 $types  = "";
 $params = [];
@@ -46,7 +47,6 @@ $sql = "
         SUM(e.errors)           AS errors,
         SUM(e.fouls_won)        AS fouls_won,
         SUM(e.fouls_committed)  AS fouls_committed,
-        SUM(e.corners_won)      AS corners_won,
         SUM(e.yellow_cards)     AS yellow_cards,
         SUM(e.red_cards)        AS red_cards
     FROM match_events e
@@ -66,7 +66,6 @@ $res = $stmt->get_result();
 
 $data = [];
 while ($row = $res->fetch_assoc()) {
-    // Όλα int εκτός από name/position
     foreach ($row as $k => $v) {
         $row[$k] = ($k === 'player_name' || $k === 'position') ? $v : (int)$v;
     }

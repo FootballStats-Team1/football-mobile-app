@@ -47,9 +47,6 @@ public class MatchStats {
         this.possession = possession;
     }
 
-    // --- Βοηθητικές μέθοδοι για το UI ---
-
-    // Συνολικές προσπάθειες (σουτ εντός + εκτός)
     public int getTotalShots() {
         return shotsOnTarget + shotsOffTarget;
     }
@@ -63,12 +60,12 @@ public class MatchStats {
         return pct + "%";
     }
 
-    // Κατοχή ως κείμενο (π.χ. "55%")
+
     public String getPossessionText() {
         return possession + "%";
     }
 
-    // --- Getters ---
+
     public int getGoals() { return goals; }
     public int getShotsOnTarget() { return shotsOnTarget; }
     public int getShotsOffTarget() { return shotsOffTarget; }

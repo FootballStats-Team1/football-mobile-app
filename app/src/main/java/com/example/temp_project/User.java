@@ -1,6 +1,6 @@
 package com.example.temp_project;
 
-public abstract class User {
+public class User {
 
     String role;
 
@@ -17,10 +17,5 @@ public abstract class User {
         this.role = role;
     }
 
-    public boolean isRole()
-    {
-        if (getRole().equals("user")) return true; // User role
-        return false; // Moderator role
-    }
 }
 

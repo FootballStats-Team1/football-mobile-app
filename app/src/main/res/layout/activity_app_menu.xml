@@ -19,7 +19,7 @@
             android:layout_width="150dp"
             android:layout_height="145dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="120dp"
             android:src="@drawable/superleaguelogo" />
 
         <LinearLayout
@@ -27,21 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
-
-            <Button
-                android:id="@+id/btnManageMatch"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="@string/menu_manage_match"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/palette_blue_1"
-                app:cornerRadius="12dp"
-                android:layout_marginBottom="24dp"
-                android:onClick="manageMatchEnter"/>
-        </LinearLayout>
+            android:gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/btnStandings"

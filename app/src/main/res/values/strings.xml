@@ -6,7 +6,7 @@
 
     <string name="Userbtn">User</string>
     <string name="StatisticAnalystbtn">Statistic Analyst</string>
-    <string name="SignInlbl">Sign In As:</string>
+    <string name="enterPortal">Enter Service</string>
     <string name="Helpbtn" translatable="false">\?</string>
     <string name="Languagebtn" translatable="false">EN/GR</string>
 
@@ -57,7 +57,6 @@
     <string name="stat_fouls">Foul</string>
     <string name="stat_yellows">Yellow Cards</string>
     <string name="stat_reds">Red cards</string>
-
 
     <string name="starting">Starting</string>
     <string name="substitutes">Substitutes</string>

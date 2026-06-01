@@ -20,15 +20,6 @@ public class AppMenuActivity extends AppCompatActivity {
 
         analystSection = findViewById(R.id.analystSection);
 
-        boolean isAnalyst = getIntent().getBooleanExtra("IS_ANALYST", false);
-
-        if (!isAnalyst) {
-            analystSection.setVisibility(View.GONE);
-        }
-    }
-
-    public void manageMatchEnter(View v) {
-        // Θα συνδεθεί με την οθόνη Διαχείρισης Αγώνα (Requirements R1, R2)
     }
 
     public void standingsEnter(View v) {

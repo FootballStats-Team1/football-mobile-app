@@ -4,7 +4,7 @@
 
     <string name="Userbtn">Φίλαθλος</string>
     <string name="StatisticAnalystbtn">Αναλυτής Στατιστικών</string>
-    <string name="SignInlbl">Σύνδεση ως:</string>
+    <string name="enterPortal">Είσοδος στην Υπηρεσία</string>
 
     <string name="help_title">Οδηγίες Χρήσης</string>
     <string name="help_message">Καλώς ήρθατε στο Σύστημα Διαχείρισης!\n\nΕπιλέξτε τον ρόλο σας για να συνδεθείτε:\n\n• User (Φίλαθλος): Παρακολούθηση αγώνων, live στατιστικά, βαθμολογίες και 11-άδες.\n\n• Statistics Analyst: Διαχείριση κάρτας αγώνα και καταγραφή γεγονότων (σουτ, πάσες, κάρτες κ.λπ.).</string>

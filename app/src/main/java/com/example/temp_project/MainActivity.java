@@ -10,28 +10,17 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button analystBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setTitle(R.string.title_main);
-
-        analystBtn = findViewById(R.id.StatisticAnalystbtn);
     }
 
-    public void analystEnter(View v)
-    {
-        Intent nextActivity = new Intent(this, StatsAnalystConfirmationActivity.class);
-        startActivity(nextActivity);
-    }
 
-    public void userEnter(View v)
+    public void enterButton(View v)
     {
         Intent intent = new Intent(this, AppMenuActivity.class);
-        intent.putExtra("IS_ANALYST", false);
         startActivity(intent);
     }
 

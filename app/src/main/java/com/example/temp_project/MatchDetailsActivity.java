@@ -1,9 +1,14 @@
 package com.example.temp_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -41,6 +46,13 @@ public class MatchDetailsActivity extends AppCompatActivity {
     private LinearLayout layoutHomeStarters, layoutAwayStarters;
     private LinearLayout layoutHomeSubs, layoutAwaySubs;
     private boolean lineupsFilled = false;
+
+    private LinearLayout teamSelectorLayout;
+    private ImageView btnHomeTeam, btnAwayTeam;
+
+    private LinearLayout layoutSelectedStarters, layoutSelectedSubs;
+
+    private ArrayList<ArrayList<String>> cachedLineups;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,10 +115,15 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
         // Panel Παικτών
         lineupsScroll = findViewById(R.id.lineupsScroll);
-        layoutHomeStarters = findViewById(R.id.layoutHomeStarters);
-        layoutAwayStarters = findViewById(R.id.layoutAwayStarters);
-        layoutHomeSubs = findViewById(R.id.layoutHomeSubs);
-        layoutAwaySubs = findViewById(R.id.layoutAwaySubs);
+
+
+        teamSelectorLayout = findViewById(R.id.teamSelectorLayout);
+
+        btnHomeTeam = findViewById(R.id.btnHomeTeam);
+        btnAwayTeam = findViewById(R.id.btnAwayTeam);
+
+        layoutSelectedStarters = findViewById(R.id.layoutSelectedStarters);
+        layoutSelectedSubs = findViewById(R.id.layoutSelectedSubs);
     }
 
     private void populateHeader(Match match) {
@@ -137,6 +154,14 @@ public class MatchDetailsActivity extends AppCompatActivity {
         } else {
             tvStatus.setText(getString(R.string.status_pending));  // π.χ. "Δεν έχει ξεκινήσει"
         }
+
+        Picasso.with(getApplicationContext())
+                .load(match.getHomeLogo())
+                .into(btnHomeTeam);
+
+        Picasso.with(getApplicationContext())
+                .load(match.getAwayLogo())
+                .into(btnAwayTeam);
     }
 
     /*private void setupButtons() {
@@ -176,7 +201,8 @@ public class MatchDetailsActivity extends AppCompatActivity {
         teamStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lineupsScroll.setVisibility(View.GONE); // Κρύβουμε τους παίκτες (αν ήταν ανοιχτοί)
+                lineupsScroll.setVisibility(View.GONE);      // hide the player list
+                teamSelectorLayout.setVisibility(View.GONE);  // <-- ADD THIS: hide the logo buttons
 
                 if (statsScroll.getVisibility() == View.VISIBLE) {
                     statsScroll.setVisibility(View.GONE);
@@ -193,15 +219,21 @@ public class MatchDetailsActivity extends AppCompatActivity {
         personalStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                statsScroll.setVisibility(View.GONE); // Κρύβουμε τα στατιστικά (αν ήταν ανοιχτά)
 
-                if (lineupsScroll.getVisibility() == View.VISIBLE) {
+                statsScroll.setVisibility(View.GONE);
+
+                if (teamSelectorLayout.getVisibility() == View.VISIBLE) {
+
+                    teamSelectorLayout.setVisibility(View.GONE);
                     lineupsScroll.setVisibility(View.GONE);
+
                 } else {
+
                     if (!lineupsFilled) {
                         fillLineups();
                     }
-                    lineupsScroll.setVisibility(View.VISIBLE);
+
+                    teamSelectorLayout.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -260,18 +292,19 @@ public class MatchDetailsActivity extends AppCompatActivity {
     }
 
     private void fillLineups() {
-        try {
-            OkHttpHandler handler = new OkHttpHandler();
-            // Φέρνουμε τις 4 λίστες
-            ArrayList<ArrayList<String>> lineups = handler.getMatchLineups(Config.BASE_URL + "getMatchLineups.php?matchId=" + matchId);
 
-            // Γεμίζουμε τα 4 Layouts με TextViews
-            populateColumn(layoutHomeStarters, lineups.get(0));
-            populateColumn(layoutAwayStarters, lineups.get(1));
-            populateColumn(layoutHomeSubs, lineups.get(2));
-            populateColumn(layoutAwaySubs, lineups.get(3));
+        try {
+
+            OkHttpHandler handler = new OkHttpHandler();
+
+            cachedLineups = handler.getMatchLineups(
+                    Config.BASE_URL + "getMatchLineups.php?matchId=" + matchId
+            );
+
+            setupTeamButtons();
 
             lineupsFilled = true;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -279,13 +312,65 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
     private void populateColumn(LinearLayout container, ArrayList<String> players) {
         for (String playerName : players) {
-            TextView tv = new TextView(this);
-            tv.setText(playerName);
-            tv.setTextColor(android.graphics.Color.WHITE);
-            tv.setTextSize(15f);
-            //tv.setTypeface(null, android.graphics.Typeface.BOLD);
-            tv.setPadding(0, 12, 0, 12);
-            container.addView(tv);
+            Button btn = new Button(this);
+            btn.setText(playerName);
+
+            btn.setTextColor(android.graphics.Color.WHITE);
+            btn.setTextSize(15f);
+            btn.setTypeface(null, android.graphics.Typeface.BOLD);
+            btn.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
+
+            int tintColor = ContextCompat.getColor(this, R.color.palette_blue_4);
+            btn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(tintColor));
+
+            btn.setOnClickListener(v -> {
+                Intent intent = new Intent(MatchDetailsActivity.this, PersonalStatsActivity.class);
+                intent.putExtra("PLAYER_NAME", playerName);
+                intent.putExtra("MATCH_ID", matchId);
+                startActivity(intent);
+
+            });
+
+            container.addView(btn);
         }
     }
+
+    private void setupTeamButtons() {
+
+        btnHomeTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showTeamLineup(
+                        cachedLineups.get(0), // starters
+                        cachedLineups.get(2)  // subs
+                );
+            }
+        });
+
+        btnAwayTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showTeamLineup(
+                        cachedLineups.get(1), // starters
+                        cachedLineups.get(3)  // subs
+                );
+            }
+        });
+    }
+
+    private void showTeamLineup(ArrayList<String> starters,
+                                ArrayList<String> subs) {
+
+        layoutSelectedStarters.removeAllViews();
+        layoutSelectedSubs.removeAllViews();
+
+        populateColumn(layoutSelectedStarters, starters);
+        populateColumn(layoutSelectedSubs, subs);
+
+        lineupsScroll.setVisibility(View.VISIBLE);
+    }
+
+
 }

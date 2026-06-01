@@ -70,4 +70,23 @@
     <string name="title_match_details">Match Details</string>
 
 
+    <!-- Personal Stats -->
+    <string name="goals">Goals</string>
+    <string name="assists">Assists</string>
+    <string name="shots_on_target">Shots on target</string>
+    <string name="shots_off_target">Shots off target</string>
+    <string name="passes_succ">Successful passes</string>
+    <string name="passes_fail">Failed passes</string>
+    <string name="tackles_succ">Successful tackles</string>
+    <string name="tackles_fail">Failed tackles</string>
+    <string name="crosses_succ">Successful crosses</string>
+    <string name="crosses_fail">Failed crosses</string>
+    <string name="errors">Errors</string>
+    <string name="fouls_won">Fouls won</string>
+    <string name="fouls_committed">Fouls committed</string>
+    <string name="corners_won">Corners won</string>
+    <string name="yellow_cards">Yellow cards</string>
+    <string name="red_cards">Red cards</string>
+
+
 </resources>

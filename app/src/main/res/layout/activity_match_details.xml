@@ -7,7 +7,6 @@
     android:background="@color/palette_blue_6"
     tools:context=".MatchDetailsActivity">
 
-    <!-- ============ HEADER ΑΓΩΝΑ: Logo - Σκορ - Logo ============ -->
     <LinearLayout
         android:id="@+id/matchHeader"
         android:layout_width="0dp"
@@ -22,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Γηπεδούχος: logo + όνομα -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,7 +46,6 @@
                 tools:text="ΑΕΚ" />
         </LinearLayout>
 
-        <!-- Κέντρο: Σκορ + Status -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +73,6 @@
                 tools:text="Τελικό" />
         </LinearLayout>
 
-        <!-- Φιλοξενούμενος: logo + όνομα -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,7 +99,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- ============ ΚΟΥΜΠΙΑ ============ -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -118,6 +113,7 @@
         <Button
             android:id="@+id/teamStatsBtn"
             android:layout_width="0dp"
+            android:backgroundTint="@color/palette_blue_1"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
@@ -126,14 +122,49 @@
         <Button
             android:id="@+id/personalStatsBtn"
             android:layout_width="0dp"
+            android:backgroundTint="@color/palette_blue_1"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_weight="1"
             android:text="@string/personalStats" />
     </LinearLayout>
 
-    <!-- ============ PANEL ΣΤΑΤΙΣΤΙΚΩΝ (κρυφό αρχικά) ============ -->
-    <!-- Κάθε γραμμή: τιμή γηπεδούχου | label | τιμή φιλοξενούμενου -->
+    <LinearLayout
+        android:id="@+id/teamSelectorLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnHomeTeam"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/palette_blue_3"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/teamStats" />
+
+        <ImageButton
+            android:id="@+id/btnAwayTeam"
+            android:layout_width="0dp"
+            android:backgroundTint="@color/palette_blue_3"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/teamStats" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/statsScroll"
         android:layout_width="0dp"
@@ -154,80 +185,169 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
-            <!-- Κατοχή -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomePossession" style="@style/StatValue" tools:text="55%" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_possession" />
-                <TextView android:id="@+id/tvAwayPossession" style="@style/StatValue" tools:text="45%" />
+                <TextView
+                    android:id="@+id/tvHomePossession"
+                    style="@style/StatValue"
+                    tools:text="55%" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_possession" />
+
+                <TextView
+                    android:id="@+id/tvAwayPossession"
+                    style="@style/StatValue"
+                    tools:text="45%" />
             </LinearLayout>
 
-            <!-- Συνολικά σουτ -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeShots" style="@style/StatValue" tools:text="12" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_shots" />
-                <TextView android:id="@+id/tvAwayShots" style="@style/StatValue" tools:text="8" />
+                <TextView
+                    android:id="@+id/tvHomeShots"
+                    style="@style/StatValue"
+                    tools:text="12" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_shots" />
+
+                <TextView
+                    android:id="@+id/tvAwayShots"
+                    style="@style/StatValue"
+                    tools:text="8" />
             </LinearLayout>
 
-            <!-- Σουτ εντός -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeShotsOn" style="@style/StatValue" tools:text="5" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_shots_on" />
-                <TextView android:id="@+id/tvAwayShotsOn" style="@style/StatValue" tools:text="3" />
+                <TextView
+                    android:id="@+id/tvHomeShotsOn"
+                    style="@style/StatValue"
+                    tools:text="5" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_shots_on" />
+
+                <TextView
+                    android:id="@+id/tvAwayShotsOn"
+                    style="@style/StatValue"
+                    tools:text="3" />
             </LinearLayout>
 
-            <!-- Πάσες -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomePasses" style="@style/StatValue" tools:text="420" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_passes" />
-                <TextView android:id="@+id/tvAwayPasses" style="@style/StatValue" tools:text="350" />
+                <TextView
+                    android:id="@+id/tvHomePasses"
+                    style="@style/StatValue"
+                    tools:text="420" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_passes" />
+
+                <TextView
+                    android:id="@+id/tvAwayPasses"
+                    style="@style/StatValue"
+                    tools:text="350" />
             </LinearLayout>
 
-            <!-- Ευστοχία πάσας -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomePassAcc" style="@style/StatValue" tools:text="88%" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_pass_acc" />
-                <TextView android:id="@+id/tvAwayPassAcc" style="@style/StatValue" tools:text="82%" />
+                <TextView
+                    android:id="@+id/tvHomePassAcc"
+                    style="@style/StatValue"
+                    tools:text="88%" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_pass_acc" />
+
+                <TextView
+                    android:id="@+id/tvAwayPassAcc"
+                    style="@style/StatValue"
+                    tools:text="82%" />
             </LinearLayout>
 
-            <!-- Τάκλιν -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeTackles" style="@style/StatValue" tools:text="18" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_tackles" />
-                <TextView android:id="@+id/tvAwayTackles" style="@style/StatValue" tools:text="22" />
+                <TextView
+                    android:id="@+id/tvHomeTackles"
+                    style="@style/StatValue"
+                    tools:text="18" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_tackles" />
+
+                <TextView
+                    android:id="@+id/tvAwayTackles"
+                    style="@style/StatValue"
+                    tools:text="22" />
             </LinearLayout>
 
-            <!-- Κόρνερ -->
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeCorners" style="@style/StatValue" tools:text="6" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_corners" />
-                <TextView android:id="@+id/tvAwayCorners" style="@style/StatValue" tools:text="4" />
+                <TextView
+                    android:id="@+id/tvHomeCorners"
+                    style="@style/StatValue"
+                    tools:text="6" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_corners" />
+
+                <TextView
+                    android:id="@+id/tvAwayCorners"
+                    style="@style/StatValue"
+                    tools:text="4" />
             </LinearLayout>
 
-
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeFouls" style="@style/StatValue" tools:text="11" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_fouls" />
-                <TextView android:id="@+id/tvAwayFouls" style="@style/StatValue" tools:text="14" />
+                <TextView
+                    android:id="@+id/tvHomeFouls"
+                    style="@style/StatValue"
+                    tools:text="11" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_fouls" />
+
+                <TextView
+                    android:id="@+id/tvAwayFouls"
+                    style="@style/StatValue"
+                    tools:text="14" />
             </LinearLayout>
 
-
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeYellows" style="@style/StatValue" tools:text="2" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_yellows" />
-                <TextView android:id="@+id/tvAwayYellows" style="@style/StatValue" tools:text="1" />
+                <TextView
+                    android:id="@+id/tvHomeYellows"
+                    style="@style/StatValue"
+                    tools:text="2" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_yellows" />
+
+                <TextView
+                    android:id="@+id/tvAwayYellows"
+                    style="@style/StatValue"
+                    tools:text="1" />
             </LinearLayout>
 
-
             <LinearLayout style="@style/StatRow">
-                <TextView android:id="@+id/tvHomeReds" style="@style/StatValue" tools:text="0" />
-                <TextView style="@style/StatLabel" android:text="@string/stat_reds" />
-                <TextView android:id="@+id/tvAwayReds" style="@style/StatValue" tools:text="0" />
+                <TextView
+                    android:id="@+id/tvHomeReds"
+                    style="@style/StatValue"
+                    tools:text="0" />
+
+                <TextView
+                    style="@style/StatLabel"
+                    android:text="@string/stat_reds" />
+
+                <TextView
+                    android:id="@+id/tvAwayReds"
+                    style="@style/StatValue"
+                    tools:text="0" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- ============ PANEL ΠΑΙΚΤΩΝ (κρυφό αρχικά) ============ -->
     <ScrollView
         android:id="@+id/lineupsScroll"
         android:layout_width="0dp"
@@ -236,7 +356,7 @@
         android:layout_marginTop="12dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@id/teamSelectorLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -254,29 +374,15 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:paddingBottom="12dp"/>
+                android:gravity="center"
+                android:paddingBottom="12dp" />
 
             <LinearLayout
+                android:id="@+id/layoutSelectedStarters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:id="@+id/layoutHomeStarters"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
-
-                <LinearLayout
-                    android:id="@+id/layoutAwayStarters"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="end"/>
-            </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -284,31 +390,17 @@
                 android:text="@string/substitutes"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:layout_marginTop="24dp"
-                android:paddingBottom="12dp"/>
+                android:paddingBottom="12dp" />
 
             <LinearLayout
+                android:id="@+id/layoutSelectedSubs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:id="@+id/layoutHomeSubs"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
-
-                <LinearLayout
-                    android:id="@+id/layoutAwaySubs"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="end"/>
-            </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center_horizontal"/>
 
         </LinearLayout>
     </ScrollView>

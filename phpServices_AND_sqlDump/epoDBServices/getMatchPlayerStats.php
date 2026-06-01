@@ -26,7 +26,7 @@ if ($matchId <= 0) {
 // JOIN: match_events (στατιστικά) -> players (ονομα/θεση/ομαδα) -> matches (ποια ειναι home/away)
 $sql = "
     SELECT
-        p.id AS player_id, p.name, p.position, p.team_id,
+        p.id AS player_id, p.name, p.position, p.photo, p.team_id,
         m.home_team_id, m.away_team_id,
         e.goals, e.assists,
         e.shots_on_target, e.shots_off_target,
@@ -34,7 +34,7 @@ $sql = "
         e.tackles_succ, e.tackles_fail,
         e.crosses_succ, e.crosses_fail,
         e.errors, e.fouls_won, e.fouls_committed,
-        e.corners_won, e.yellow_cards, e.red_cards
+         e.yellow_cards, e.red_cards
     FROM match_events e
     JOIN players p ON e.player_id = p.id
     JOIN matches m ON e.match_id  = m.id
@@ -70,8 +70,8 @@ while ($row = $res->fetch_assoc()) {
         "errors"           => (int)$row['errors'],
         "fouls_won"        => (int)$row['fouls_won'],
         "fouls_committed"  => (int)$row['fouls_committed'],
-        "corners_won"      => (int)$row['corners_won'],
         "yellow_cards"     => (int)$row['yellow_cards'],
+        "photo"            => $row['photo'],
         "red_cards"        => (int)$row['red_cards']
     ];
 

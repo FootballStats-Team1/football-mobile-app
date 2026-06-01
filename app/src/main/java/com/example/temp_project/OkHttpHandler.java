@@ -195,4 +195,44 @@ public class OkHttpHandler {
         } catch (JSONException e) { e.printStackTrace(); }
         return allLists;
     }
+
+    public ArrayList<ArrayList<PlayerMatchStats>> getMatchPlayerStats(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        Request request = new Request.Builder().url(url).build();
+        Response response = client.newCall(request).execute();
+
+        ArrayList<PlayerMatchStats> home = new ArrayList<>();
+        ArrayList<PlayerMatchStats> away = new ArrayList<>();
+
+        try {
+            JSONObject obj = new JSONObject(response.body().string());
+            parsePlayers(obj.getJSONArray("home_players"), home);
+            parsePlayers(obj.getJSONArray("away_players"), away);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<ArrayList<PlayerMatchStats>> result = new ArrayList<>();
+        result.add(home); // index 0 = home
+        result.add(away); // index 1 = away
+        return result;
+    }
+
+    private void parsePlayers(JSONArray arr, ArrayList<PlayerMatchStats> list) throws JSONException {
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject o = arr.getJSONObject(i);
+            list.add(new PlayerMatchStats(
+                    o.getInt("player_id"), o.getString("name"), o.getString("position"), o.getString("photo"),
+                    o.getInt("goals"), o.getInt("assists"),
+                    o.getInt("shots_on_target"), o.getInt("shots_off_target"),
+                    o.getInt("passes_succ"), o.getInt("passes_fail"),
+                    o.getInt("tackles_succ"), o.getInt("tackles_fail"),
+                    o.getInt("crosses_succ"), o.getInt("crosses_fail"),
+                    o.getInt("errors"), o.getInt("fouls_won"), o.getInt("fouls_committed"),
+                    o.getInt("yellow_cards"), o.getInt("red_cards")
+            ));
+        }
+    }
+
+
 }

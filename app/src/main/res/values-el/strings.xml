@@ -60,6 +60,24 @@
     <string name="title_standings">Βαθμολογία</string>
     <string name="title_match_details">Στατιστικά Αγώνα</string>
 
+    <!-- Προσωπικά Στατιστικα -->
+    <string name="goals">Γκολ</string>
+    <string name="assists">Ασίστ</string>
+    <string name="shots_on_target">Σουτ εντός</string>
+    <string name="shots_off_target">Σουτ εκτός</string>
+    <string name="passes_succ">Εύστοχες πάσες</string>
+    <string name="passes_fail">Άστοχες πάσες</string>
+    <string name="tackles_succ">Επιτυχημένα τάκλιν</string>
+    <string name="tackles_fail">Αποτυχημένα τάκλιν</string>
+    <string name="crosses_succ">Εύστοχες σέντρες</string>
+    <string name="crosses_fail">Άστοχες σέντρες</string>
+    <string name="errors">Λάθη</string>
+    <string name="fouls_won">Κερδισμένα φάουλ</string>
+    <string name="fouls_committed">Φάουλ</string>
+    <string name="corners_won">Κερδισμένα κόρνερ</string>
+    <string name="yellow_cards">Κίτρινες κάρτες</string>
+    <string name="red_cards">Κόκκινες κάρτες</string>
+
 
 
 

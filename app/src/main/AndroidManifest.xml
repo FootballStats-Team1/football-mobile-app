@@ -16,9 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PersonalStatsActivity"
+            android:exported="false"
+            android:parentActivityName=".MatchDetailsActivity"/>
+
+        <activity
             android:name=".MatchDetailsActivity"
-            android:parentActivityName=".MatchesActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MatchesActivity" />
         <activity
             android:name=".MatchesActivity"
             android:exported="false"

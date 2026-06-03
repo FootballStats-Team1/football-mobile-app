@@ -76,4 +76,10 @@ public class PersonalStatsActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.yellowCardsTxt)).setText(getString(R.string.yellow_cards) + ": " + p.getYellowCards());
         ((TextView) findViewById(R.id.redCardsTxt)).setText(getString(R.string.red_cards) + ": " + p.getRedCards());
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 }

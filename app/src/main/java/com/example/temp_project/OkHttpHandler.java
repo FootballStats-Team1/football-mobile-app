@@ -234,5 +234,32 @@ public class OkHttpHandler {
         }
     }
 
+    public ArrayList<TopStat> getTopStats(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        Request request = new Request.Builder().url(url).build();
+        Response response = client.newCall(request).execute();
+
+        ArrayList<TopStat> list = new ArrayList<>();
+        try {
+            JSONArray arr = new JSONArray(response.body().string());
+            for (int i = 0; i < arr.length(); i++) {
+                JSONObject o = arr.getJSONObject(i);
+                TopStat t = new TopStat();
+                t.playerId = o.getInt("player_id");
+                t.name     = o.getString("name");
+                t.position = o.getString("position");
+                t.photo    = o.getString("photo");
+                t.teamId   = o.getInt("team_id");
+                t.teamName = o.getString("team_name");
+                t.badge    = o.getString("badge");
+                t.total    = o.getInt("total");
+                list.add(t);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
 }

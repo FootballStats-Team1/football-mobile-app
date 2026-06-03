@@ -34,7 +34,8 @@ public class AppMenuActivity extends AppCompatActivity {
     }
 
     public void playerStatsEnter(View v) {
-        // Θα συνδεθεί με την οθόνη Ατομικών/Ομαδικών Στατιστικών (Requirement R5)
+        Intent intent = new Intent(this, TopStatsActivity.class);
+        startActivity(intent);
     }
 
 }

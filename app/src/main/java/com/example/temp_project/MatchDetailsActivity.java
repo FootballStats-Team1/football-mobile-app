@@ -78,6 +78,9 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
         // 5. Ορίζουμε τι κάνουν τα κουμπιά
         setupButtons();
+
+        fillTeamStats();
+        statsScroll.setVisibility(View.VISIBLE);
     }
 
     private void bindViews() {

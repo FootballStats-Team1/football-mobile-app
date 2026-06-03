@@ -150,13 +150,6 @@
                 android:text="@string/fouls_committed" />
 
             <TextView
-                android:id="@+id/cornersWonTxt"
-                style="@style/PersonalStats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/corners_won" />
-
-            <TextView
                 android:id="@+id/yellowCardsTxt"
                 style="@style/PersonalStats"
                 android:layout_width="match_parent"

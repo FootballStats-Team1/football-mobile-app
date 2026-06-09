@@ -57,13 +57,13 @@
             android:id="@+id/btnPlayerStats"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:text="@string/menu_player_stats"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/palette_blue_3"
+            android:onClick="playerStatsEnter"
+            android:text="@string/topStats"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:backgroundTint="@color/palette_blue_3"
-            app:cornerRadius="12dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="playerStatsEnter"/>
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
 </ScrollView>

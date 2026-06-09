@@ -80,6 +80,8 @@
 
     <!-- Top Stats -->
     <string name="topStats">Τοπ Στατιστικά</string>
+    <string name="personal">Ατομικά</string>
+    <string name="team">Ομαδικά</string>
 
 
 

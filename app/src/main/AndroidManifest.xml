@@ -15,9 +15,11 @@
         android:theme="@style/Theme.Tempproject"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".TopStatsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AppMenuActivity"/>
         <activity
             android:name=".PersonalStatsActivity"
             android:exported="false"

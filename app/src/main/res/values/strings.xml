@@ -90,6 +90,8 @@
 
     <!-- Top Stats -->
     <string name="topStats">Top Stats</string>
+    <string name="personal">Personal</string>
+    <string name="team">Team Stats</string>
 
 
 </resources>

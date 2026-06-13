@@ -2,6 +2,7 @@ package com.example.temp_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -114,10 +115,11 @@ public class MatchesActivity extends AppCompatActivity {
             // Έλεγχος αν ο αγώνας είναι Live
             if ("live".equalsIgnoreCase(match.getStatus())) {
                 isRoundLive = true; // Βρήκαμε live αγώνα, άρα όλη η αγωνιστική είναι live!
-                tvScore.setTextColor(android.graphics.Color.RED); // Το κάνουμε κόκκινο
-                tvScore.setText("LIVE\n" + match.getScoreText()); // Γράφουμε "LIVE" και από κάτω το σκορ
+                tvScore.setTextColor(android.graphics.Color.RED);
+                tvScore.setText(capitalizeStatus(match.getStatus()) + "\n" + match.getScoreText() );
             } else {
                 tvScore.setText(match.getScoreText());
+                tvScore.setTextColor(Color.BLACK);
             }
             Picasso.with(getApplicationContext()).load(match.getHomeLogo()).error(R.mipmap.ic_launcher_round).into(imgHome);
             Picasso.with(getApplicationContext()).load(match.getAwayLogo()).error(R.mipmap.ic_launcher_round).into(imgAway);
@@ -140,5 +142,10 @@ public class MatchesActivity extends AppCompatActivity {
 
         // Επιστρέφουμε το αποτέλεσμα αν η αγωνιστική είναι live ή όχι
         return isRoundLive;
+    }
+
+    private String capitalizeStatus(String status) {
+        if (status == null || status.isEmpty()) return "";
+        return status.substring(0, 1).toUpperCase() + status.substring(1).toLowerCase();
     }
 }

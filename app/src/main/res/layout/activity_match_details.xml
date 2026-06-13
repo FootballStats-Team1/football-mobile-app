@@ -113,20 +113,22 @@
         <Button
             android:id="@+id/teamStatsBtn"
             android:layout_width="0dp"
-            android:backgroundTint="@color/palette_blue_1"
             android:layout_height="wrap_content"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:text="@string/teamStats" />
+            android:backgroundTint="@color/palette_blue_2"
+            android:text="@string/teamStats"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/personalStatsBtn"
             android:layout_width="0dp"
-            android:backgroundTint="@color/palette_blue_1"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_weight="1"
-            android:text="@string/personalStats" />
+            android:backgroundTint="@color/palette_blue_2"
+            android:text="@string/personalStats"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout

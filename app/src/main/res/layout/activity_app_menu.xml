@@ -33,37 +33,40 @@
             android:id="@+id/btnStandings"
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/palette_blue_2"
+            android:onClick="standingsEnter"
             android:text="@string/menu_standings"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:backgroundTint="@color/palette_blue_3"
-            app:cornerRadius="12dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="standingsEnter"/>
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
 
         <Button
             android:id="@+id/btnMatches"
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/palette_blue_2"
+            android:onClick="matchesEnter"
             android:text="@string/menu_matches"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:backgroundTint="@color/palette_blue_3"
-            app:cornerRadius="12dp"
-            android:layout_marginBottom="16dp"
-            android:onClick="matchesEnter"/>
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
 
         <Button
             android:id="@+id/btnPlayerStats"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/palette_blue_3"
+            android:backgroundTint="@color/palette_blue_2"
             android:onClick="playerStatsEnter"
             android:text="@string/topStats"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:cornerRadius="12dp" />
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
 
     </LinearLayout>
 </ScrollView>

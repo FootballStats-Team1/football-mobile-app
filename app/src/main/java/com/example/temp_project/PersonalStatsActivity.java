@@ -16,6 +16,9 @@ public class PersonalStatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_stats);
 
+        String name = getIntent().getStringExtra("PLAYER_NAME");
+        setTitle("Στατιστικά: " + name);
+
         int matchId = getIntent().getIntExtra("MATCH_ID", -1);
         String playerName = getIntent().getStringExtra("PLAYER_NAME");
 

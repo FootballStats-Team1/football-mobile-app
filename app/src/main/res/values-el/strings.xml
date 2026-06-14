@@ -59,6 +59,7 @@
     <string name="title_menu">Αρχικό Μενού</string>
     <string name="title_standings">Βαθμολογία</string>
     <string name="title_match_details">Στατιστικά Αγώνα</string>
+    <string name="title_personal_stats">Στατιστικά: %1$s</string>
 
     <!-- Προσωπικά Στατιστικα -->
     <string name="goals">Γκολ</string>
